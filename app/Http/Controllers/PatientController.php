@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\PatientRequest;
 use App\Models\Professional;
 use App\Models\Patient;
 use App\Models\Appointment;
@@ -45,9 +45,15 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientRequest $request)
     {
-        //
+        $relAppointments = Appointment::appointments();
+        $this->objAppointment->create([
+            'patient_id'=> $request->patient_id,
+            'professional_id'=> $request->professional_id,
+            'datetime'=>$request->datetime
+        ]);
+        return view('welcome', compact('relAppointments'));
     }
 
     /**
@@ -85,7 +91,7 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatientRequest $request, $id)
     {
         echo $id;
     }

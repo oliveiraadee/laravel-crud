@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Appointment extends Model
 {
     protected $table ='appointment';
+    protected $fillable = ['professional_id', 'patient_id', 'datetime'];
 
     public function appointments()
     {
