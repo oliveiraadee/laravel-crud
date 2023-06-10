@@ -30,4 +30,5 @@ class Appointment extends Model
                 ON P.id = A.professional_id');	
     }
 
+
 }

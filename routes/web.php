@@ -14,3 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/appointments', 'App\Http\Controllers\PatientController@index');
+Route::get('/appointments/{id}', 'App\Http\Controllers\PatientController@show');
+Route::get('/appointment/create', 'App\Http\Controllers\PatientController@create');

@@ -12,6 +12,7 @@ class PatientController extends Controller
     private $objProfissional;
     private $objPatient;
     private $objAppointment;
+    private $appointmentView;
 
     public function __construct()
     {
@@ -22,7 +23,6 @@ class PatientController extends Controller
 
     public function index()
     {
-        $typeModal = "";
         $relAppointments = Appointment::appointments();
         return view('welcome', compact('relAppointments'));
     }
@@ -34,7 +34,9 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        $patients = $this->objPatient->all();
+        $profissionals = $this->objProfissional->all();
+        return view('create', compact('patients', 'profissionals'));
     }
 
     /**
@@ -56,7 +58,13 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = $this->objAppointment::find($id);
+        $id_patient = $appointment->patient_id;
+        $id_professional = $appointment->professional_id;
+        $patient = $this->objPatient->find($id_patient);
+        $profissional = $this->objProfissional->find($id_professional);
+
+        return view('view', compact('appointment', 'patient', 'profissional'));
     }
 
     /**
@@ -79,7 +87,7 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo $id;
     }
 
     /**
@@ -90,6 +98,6 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo $id;
     }
 }
