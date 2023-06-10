@@ -13,6 +13,7 @@ class Appointment extends Model
     public function appointments()
     {
         return $appointement = DB::select('SELECT
+                A.id as appoinmentID,
                 P.name as professionalName,
                 P.register as professionalRegister,
                 P.speciality as professionalSpeciality,

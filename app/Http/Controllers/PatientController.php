@@ -22,6 +22,7 @@ class PatientController extends Controller
 
     public function index()
     {
+        $typeModal = "";
         $relAppointments = Appointment::appointments();
         return view('welcome', compact('relAppointments'));
     }
