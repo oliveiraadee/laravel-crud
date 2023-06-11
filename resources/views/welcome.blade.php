@@ -41,7 +41,7 @@
                                 data-bs-toggle="modal"
                                 data-bs-target="#contactModal" type="button" class="btn btn-secondary align-middle m-1">View</button>
         </a>
-        <a href="{{url("appointments/$appointments->appoinmentID")}}">
+        <a href="{{url("appointments/$appointments->appoinmentID/edit")}}">
           <button type="button" class="btn btn-primary align-middle m-1">Edit</button>
         </a>
       <button type="button" class="btn btn-danger align-middle m-1">Remove</button></td>

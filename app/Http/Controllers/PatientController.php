@@ -81,7 +81,18 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $appointment = $this->objAppointment::find($id);
+        $id_patient = $appointment->patient_id;
+        $id_professional = $appointment->professional_id;
+        $patient = $this->objPatient->find($id_patient);
+        $profissional = $this->objProfissional->find($id_professional);
+        $profissionals = $this->objProfissional->all();
+        // $this->objAppointment->create([
+        //     'patient_id'=> $request->patient_id,
+        //     'professional_id'=> $request->professional_id,
+        //     'datetime'=>$request->datetime
+        // ]);
+        return view('create', compact('patient', 'profissionals', 'appointment' ));
     }
 
     /**
@@ -93,7 +104,13 @@ class PatientController extends Controller
      */
     public function update(PatientRequest $request, $id)
     {
-        echo $id;
+        $relAppointments = Appointment::appointments();
+        $this->objAppointment->where(['id'=>$id])->update([
+            'patient_id'=> $request->patient_id,
+            'professional_id'=> $request->professional_id,
+            'datetime'=>$request->datetime
+        ]);
+        return view('welcome', compact('relAppointments'));
     }
 
     /**
