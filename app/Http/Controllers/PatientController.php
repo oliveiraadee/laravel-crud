@@ -121,6 +121,6 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
+        $del= $this->objAppointment->destroy($id);
     }
 }

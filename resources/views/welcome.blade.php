@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@csrf
 <table class="table">
 <thead class="thead-dark">
     <tr>
@@ -44,7 +45,9 @@
         <a href="{{url("appointments/$appointments->appoinmentID/edit")}}">
           <button type="button" class="btn btn-primary align-middle m-1">Edit</button>
         </a>
-      <button type="button" class="btn btn-danger align-middle m-1">Remove</button></td>
+        <a href="{{url("appointments/$appointments->appoinmentID")}}" class="js-del">
+          <button type="button" class="btn btn-danger align-middle m-1">Remove</button></td>
+        </a>
     </tr>
     @endforeach
   </tbody>
